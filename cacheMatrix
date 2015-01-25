@@ -4,20 +4,27 @@ makeCacheMatrix<-function(x=matrix()){
     x<<-y
     s<<-NULL
   }
+     ##get the matrix
   get<-function() x
+     ##set the inverse matrix to s
   setsolve<-function(solve) s<<-solve
+     ##get the inverse matrix s
   getsolve<-function() s
   }  
 }
 
 
+
+
 cacheSolve<-function(x,...){
   s<-x$getsolve()
+     ##check the inverse matrix whether has been cached or not
   if(!is.null(s)){
     message("getting cashed data")
     return(s)
   }
   data<-x$get()
+     ##calculate the inverse matrix for the initial matrix
   s<-solve(data,...)
   x$setsolve(s)
   s
